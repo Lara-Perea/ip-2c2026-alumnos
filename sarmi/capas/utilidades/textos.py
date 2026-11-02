@@ -1,13 +1,15 @@
 from sarmi import configuracion #CHEQUEAR
-
+# DUDA: Tengo dificultades para identificar cómo realizar correctamente
+# las importaciones (from ... import ...), es decir, qué debo
+# indicar en FROM y qué funciones o variables debo importar.
 
 def normalizar(texto): #######CHEQUEAR#################
     """Recibe un texto.
     Lo pasa a minúsculas y le saca las tildes (ver LETRAS_CON_TILDE en configuracion.py).
     Devuelve el texto nuevo.
     Ejemplo: normalizar("Introducción a la PROGRAMACIÓN") devuelve "introduccion a la programacion"."""
-    LETRAS_CON_TILDE = "áéíóúü" #CHEQUEAR POR LO DEL IMPORT
-    LETRAS_SIN_TILDE = "aeiouu" #CHEQUEAR POR LO DEL IMPORT
+    LETRAS_CON_TILDE = "áéíóúü" 
+    LETRAS_SIN_TILDE = "aeiouu" 
     nuevo_texto = ""
     texto = texto.lower()
     for letra in texto:
