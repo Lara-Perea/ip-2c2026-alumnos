@@ -1,6 +1,8 @@
 from ... import configuracion
 from ..utilidades import listas, textos
-
+# DUDA: Tengo dificultades para identificar cómo realizar correctamente
+# las importaciones (from ... import ...), es decir, qué debo
+# indicar en FROM y qué funciones o variables debo importar.
 
 def valoresDistintos(horarios, posicion):
     """Recibe una lista de horarios y una posición (ver POSICION_... en configuracion.py).
