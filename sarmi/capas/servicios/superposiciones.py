@@ -1,6 +1,8 @@
 from ... import configuracion
 from ..utilidades import horas
-
+# DUDA: Tengo dificultades para identificar cómo realizar correctamente
+# las importaciones (from ... import ...), es decir, qué debo
+# indicar en FROM y qué funciones o variables debo importar.
 
 def seSuperponen(horarioA, horarioB):
     """Recibe dos horarios.
