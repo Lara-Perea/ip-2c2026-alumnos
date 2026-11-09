@@ -7,10 +7,10 @@ def seSuperponen(horarioA, horarioB):
     Si uno termina justo cuando empieza el otro (de 14 a 18 y de 18 a 22), no se superponen.
     Devuelve True si se superponen y False si no.
     Ejemplo: un viernes de 18:00 a 22:00 y un viernes de 20:00 a 22:00 se superponen: devuelve True."""
-    pos_diaA = horarioA[configuracion.POSICION_DIA]
-    pos_diaB = horarioB[configuracion.POSICION_DIA]
+    diaA = horarioA[configuracion.POSICION_DIA]
+    diaB = horarioB[configuracion.POSICION_DIA]
 
-    if pos_diaA == configuracion.DIA_VIRTUAL or pos_diaB == configuracion.DIA_VIRTUAL:
+    if diaA == configuracion.DIA_VIRTUAL or diaB == configuracion.DIA_VIRTUAL:
         return False
 
     hora_inicioA = horas.horaAMinutos(horarioA[configuracion.POSICION_HORA_INICIO])
@@ -19,7 +19,7 @@ def seSuperponen(horarioA, horarioB):
     hora_inicioB = horas.horaAMinutos(horarioB[configuracion.POSICION_HORA_INICIO])
     hora_finB = horas.horaAMinutos(horarioB[configuracion.POSICION_HORA_FIN])
 
-    if (pos_diaA == pos_diaB) and (hora_inicioA < hora_finB) and (hora_inicioB < hora_finA):
+    if (diaA == diaB) and (hora_inicioA < hora_finB) and (hora_inicioB < hora_finA):
         return True
     
     return False

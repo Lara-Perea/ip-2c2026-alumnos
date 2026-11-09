@@ -1,5 +1,5 @@
 from ... import configuracion
-from ..utilidades.textos import normalizar, extraerNumero
+from ..utilidades.textos import normalizar, extraerNumero, contiene
 from ..utilidades.listas import esta
 
 def valoresDistintos(horarios, posicion):
@@ -11,7 +11,7 @@ def valoresDistintos(horarios, posicion):
     valores = []
     for hora in horarios:
         dato = hora[posicion]
-        if not esta(dato, valores): # o podia haber hecho sin llamar a la fn esta, if elemento in lista:
+        if not esta(dato, valores): 
             valores.append(dato)
     return valores
 
@@ -29,7 +29,7 @@ def buscarMateria(oferta, nombre):
     for horas in oferta:
         materia = normalizar(horas[configuracion.POSICION_MATERIA])
 
-        if nombre in materia:
+        if contiene(materia, nombre):
             lista_horarios.append(horas)
 
     return lista_horarios
