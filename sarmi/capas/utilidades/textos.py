@@ -1,7 +1,4 @@
-from sarmi import configuracion #CHEQUEAR
-# DUDA: Tengo dificultades para identificar cómo realizar correctamente
-# las importaciones (from ... import ...), es decir, qué debo
-# indicar en FROM y qué funciones o variables debo importar.
+
 
 def normalizar(texto): #######CHEQUEAR#################
     """Recibe un texto.

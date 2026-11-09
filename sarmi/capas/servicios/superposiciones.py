@@ -1,8 +1,5 @@
 from ... import configuracion
 from ..utilidades import horas
-# DUDA: Tengo dificultades para identificar cómo realizar correctamente
-# las importaciones (from ... import ...), es decir, qué debo
-# indicar en FROM y qué funciones o variables debo importar.
 
 def seSuperponen(horarioA, horarioB):
     """Recibe dos horarios.
@@ -10,17 +7,17 @@ def seSuperponen(horarioA, horarioB):
     Si uno termina justo cuando empieza el otro (de 14 a 18 y de 18 a 22), no se superponen.
     Devuelve True si se superponen y False si no.
     Ejemplo: un viernes de 18:00 a 22:00 y un viernes de 20:00 a 22:00 se superponen: devuelve True."""
-    pos_diaA = horarioA[POSICION_DIA]
-    pos_diaB = horarioB[POSICION_DIA]
+    pos_diaA = horarioA[configuracion.POSICION_DIA]
+    pos_diaB = horarioB[configuracion.POSICION_DIA]
 
-    if pos_diaA == DIA_VIRTUAL or pos_diaB == DIA_VIRTUAL:
+    if pos_diaA == configuracion.DIA_VIRTUAL or pos_diaB == configuracion.DIA_VIRTUAL:
         return False
 
-    hora_inicioA = horaAMinutos(horarioA[POSICION_HORA_INICIO])
-    hora_finA = horaAMinutos(horarioA[POSICION_HORA_FIN])
+    hora_inicioA = horas.horaAMinutos(horarioA[configuracion.POSICION_HORA_INICIO])
+    hora_finA = horas.horaAMinutos(horarioA[configuracion.POSICION_HORA_FIN])
 
-    hora_inicioB = horaAMinutos(horarioB[POSICION_HORA_INICIO])
-    hora_finB = horaAMinutos(horarioB[POSICION_HORA_FIN])
+    hora_inicioB = horas.horaAMinutos(horarioB[configuracion.POSICION_HORA_INICIO])
+    hora_finB = horas.horaAMinutos(horarioB[configuracion.POSICION_HORA_FIN])
 
     if (pos_diaA == pos_diaB) and (hora_inicioA < hora_finB) and (hora_inicioB < hora_finA):
         return True

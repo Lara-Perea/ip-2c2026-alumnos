@@ -1,8 +1,6 @@
 from ... import configuracion
-from ..utilidades import listas, textos
-# DUDA: Tengo dificultades para identificar cómo realizar correctamente
-# las importaciones (from ... import ...), es decir, qué debo
-# indicar en FROM y qué funciones o variables debo importar.
+from ..utilidades.textos import normalizar, extraerNumero
+from ..utilidades.listas import esta
 
 def valoresDistintos(horarios, posicion):
     """Recibe una lista de horarios y una posición (ver POSICION_... en configuracion.py).
@@ -29,7 +27,7 @@ def buscarMateria(oferta, nombre):
     nombre = normalizar(nombre)
 
     for horas in oferta:
-        materia = normalizar(horas[POSICION_MATERIA])
+        materia = normalizar(horas[configuracion.POSICION_MATERIA])
 
         if nombre in materia:
             lista_horarios.append(horas)
@@ -45,7 +43,7 @@ def filtrarMateriaExacta(horarios, nombre):
     lista_hora = []
     nombre = normalizar(nombre)
     for hora in horarios:
-        materia = normalizar(hora[POSICION_MATERIA])
+        materia = normalizar(hora[configuracion.POSICION_MATERIA])
 
         if nombre == materia:
             lista_hora.append(hora)
@@ -62,7 +60,7 @@ def filtrarPorComision(horarios, comision):
     comision = extraerNumero(comision)
     lista_hora = []
     for horario in horarios:
-        comision_horario = horario[POSICION_COMISION]
+        comision_horario = horario[configuracion.POSICION_COMISION]
         if comision == extraerNumero(comision_horario):
             lista_hora.append(horario)
     return lista_hora
