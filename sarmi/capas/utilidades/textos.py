@@ -12,11 +12,13 @@ def normalizar(texto):
             contador = 0
             for tilde in configuracion.LETRAS_CON_TILDE:
                 if letra == tilde:
-                    nuevo_texto = nuevo_texto + configuracion.LETRAS_SIN_TILDE[contador]
+                    letra = configuracion.LETRAS_SIN_TILDE[contador]
                     break
                 contador = contador + 1
-        else:
-            nuevo_texto = nuevo_texto + letra
+        if letra == " " and nuevo_texto != "" and nuevo_texto[-1] == " ":
+            continue
+
+        nuevo_texto = nuevo_texto + letra
 
     return nuevo_texto
 
