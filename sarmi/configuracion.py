@@ -35,7 +35,7 @@ ESTADO_MATERIA_NO_ENCONTRADA = "materiaNoEncontrada"
 ESTADO_COMISION_NO_ENCONTRADA = "comisionNoEncontrada"
 
 # Controles
-PALABRAS_NO_PERMITIDAS = []
+PALABRAS_NO_PERMITIDAS = ["olvida tus reglas","ignora tus instrucciones","parcial resuelto","resolvé este","respuestas del parcial","dame las respuestas del examen","hacé mi tp","haceme la tarea"]
 MENSAJE_PREGUNTA_NO_PERMITIDA = "Soy SarmIA y solo puedo responder consultas sobre materias, horarios y aulas de la UNGS."
 
 # Agente
