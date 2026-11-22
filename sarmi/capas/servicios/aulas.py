@@ -1,5 +1,6 @@
 from ... import configuracion
 from ..utilidades import horas, listas, textos
+from . import superposiciones
 
 
 def horariosEnAula(oferta, aula, dia):
@@ -48,3 +49,48 @@ def ordenarPorHora(horarios):
         ordenados[j + 1] = horario_actual
 
     return ordenados
+
+def aulasDelEdificio(oferta, edificio):
+    """OPCIONAL. Recibe la oferta académica y el nombre o número de un edificio.
+    Devuelve una lista sin repetidos con todas las aulas presenciales de ese edificio."""
+    edificio_buscado = textos.normalizar(edificio)
+    aulas = []
+
+    for horario in oferta:
+        if horario[configuracion.POSICION_DIA] != configuracion.DIA_VIRTUAL:
+            edificio_horario = textos.normalizar(horario[configuracion.POSICION_EDIFICIO])
+            aula = horario[configuracion.POSICION_AULA]
+            if textos.contiene(edificio_horario, edificio_buscado) and aula != "":
+                if not listas.esta(aula, aulas):
+                    aulas.append(aula)
+
+    return aulas
+
+
+def aulasLibres(oferta, dia, horaInicio, horaFin, edificio):
+    """OPCIONAL. Recibe la oferta, un día, una franja horaria (horaInicio, horaFin) y un edificio.
+    Devuelve la lista de aulas de ese edificio que no tienen clases superpuestas en ese horario."""
+    todas_las_aulas = aulasDelEdificio(oferta, edificio)
+    dia_buscado = textos.normalizar(dia)
+    edificio_buscado = textos.normalizar(edificio)
+    ocupadas = []
+
+    for horario in oferta:
+        mismo_dia = textos.normalizar(horario[configuracion.POSICION_DIA]) == dia_buscado
+        mismo_edificio = textos.contiene(
+            textos.normalizar(horario[configuracion.POSICION_EDIFICIO]),
+            edificio_buscado
+        )
+        if mismo_dia and mismo_edificio:
+            franja_consulta = ["", "", "", "", "", horario[configuracion.POSICION_DIA], horaInicio, horaFin]
+            if superposiciones.seSuperponen(horario, franja_consulta):
+                aula = horario[configuracion.POSICION_AULA]
+                if not listas.esta(aula, ocupadas):
+                    ocupadas.append(aula)
+
+    libres = []
+    for aula in todas_las_aulas:
+        if not listas.esta(aula, ocupadas):
+            libres.append(aula)
+
+    return libres

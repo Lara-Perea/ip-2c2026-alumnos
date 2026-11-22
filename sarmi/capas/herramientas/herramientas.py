@@ -59,3 +59,18 @@ def consultarTurno(materia, turno):
     horariosDelTurno = turnos.filtrarPorTurno(horarios, str(turno))
 
     return consultas.armarRespuesta(configuracion.ESTADO_OK, horariosDelTurno)
+
+
+def consultarAulasLibres(dia, horaInicio, horaFin, edificio):
+    """Muestra qué aulas están libres en un edificio, día y franja horaria.
+
+    Args:
+        dia: día de la semana, por ejemplo "Lunes".
+        horaInicio: hora de inicio en formato HH:MM, por ejemplo "10:00".
+        horaFin: hora de fin en formato HH:MM, por ejemplo "12:00".
+        edificio: nombre del módulo convertido siempre a números romanos, por ejemplo "Módulo VII" si dicen 7.
+    """
+    oferta = repositorio.cargarOferta()
+    libres = aulas.aulasLibres(oferta, str(dia), str(horaInicio), str(horaFin), str(edificio))
+
+    return consultas.armarRespuesta(configuracion.ESTADO_OK, libres)
