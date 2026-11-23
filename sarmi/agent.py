@@ -16,5 +16,6 @@ root_agent = Agent(
         herramientas.consultarAula,
         herramientas.consultarSuperposicion,
         herramientas.consultarTurno,
+        herramientas.consultarAulasLibres
     ],
 )
